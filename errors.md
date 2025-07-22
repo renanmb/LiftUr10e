@@ -69,7 +69,17 @@ Aborted (core dumped)
 
 ## error 2
 
-Something is setup wrong
+Something is wrong on the setup, it starts to throw these errors at ```Learning iteration 5/2000```
+
+Patch buffer overflow detected, please increase its size to at least 266360
+
+```bash
+2025-07-22 19:14:29 [46,804ms] [Error] [omni.physx.plugin] PhysX error: Patch buffer overflow detected, please increase its size to at least 266360 in the scene desc!
+, FILE /builds/omniverse/physics/physx/source/gpunarrowphase/src/PxgNarrowphaseCore.cpp, LINE 1599
+```
+
+[[Question] Is there a solution for the Patch buffer overflow error? #931](https://github.com/isaac-sim/IsaacLab/issues/931)
+
 
 ```bash
 ################################################################################

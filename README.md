@@ -2,6 +2,11 @@
 
 ## Overview
 
+This project is intended to help the team having issues with the following project
+
+[[Question] Lift Task with UR10e and Robotiq 2F-140 #2932](https://github.com/isaac-sim/IsaacLab/discussions/2932)
+
+
 This project/repository serves as a template for building projects or extensions based on Isaac Lab.
 It allows you to develop in an isolated environment, outside of the core Isaac Lab repository.
 
@@ -67,6 +72,14 @@ It allows you to develop in an isolated environment, outside of the core Isaac L
             # use 'FULL_PATH_TO_isaaclab.sh|bat -p' instead of 'python' if Isaac Lab is not installed in Python venv or conda
             python scripts/random_agent.py --task Liftur10e-Managed-v0 --num_envs 1
             ```
+
+## TensorBoard
+
+
+```bash
+./isaaclab.sh -p -m tensorboard.main --logdir logs/rsl_rl/Liftur10e-Managed-v0/ 
+./isaaclab.sh -p -m tensorboard.main --logdir logs/rsl_rl/Liftur10e-Managed-v0/
+```
 
 ### Set up IDE (Optional)
 
