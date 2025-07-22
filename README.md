@@ -41,7 +41,14 @@ It allows you to develop in an isolated environment, outside of the core Isaac L
 
         ```bash
         # use 'FULL_PATH_TO_isaaclab.sh|bat -p' instead of 'python' if Isaac Lab is not installed in Python venv or conda
-        python scripts/<RL_LIBRARY>/train.py --task=<TASK_NAME>
+        python scripts/rsl_rl/train.py --task Liftur10e-Managed-v0 --headless
+        ```
+
+    - Running trained model:
+
+        ```bash
+        # use 'FULL_PATH_TO_isaaclab.sh|bat -p' instead of 'python' if Isaac Lab is not installed in Python venv or conda
+        python scripts/rsl_rl/play.py --task Liftur10e-Managed-v0 --num_envs 32
         ```
 
     - Running a task with dummy agents:
@@ -52,13 +59,13 @@ It allows you to develop in an isolated environment, outside of the core Isaac L
 
             ```bash
             # use 'FULL_PATH_TO_isaaclab.sh|bat -p' instead of 'python' if Isaac Lab is not installed in Python venv or conda
-            python scripts/zero_agent.py --task=<TASK_NAME>
+            python scripts/zero_agent.py --task Liftur10e-Managed-v0 --num_envs 1
             ```
         - Random-action agent
 
             ```bash
             # use 'FULL_PATH_TO_isaaclab.sh|bat -p' instead of 'python' if Isaac Lab is not installed in Python venv or conda
-            python scripts/random_agent.py --task=<TASK_NAME>
+            python scripts/random_agent.py --task Liftur10e-Managed-v0 --num_envs 1
             ```
 
 ### Set up IDE (Optional)

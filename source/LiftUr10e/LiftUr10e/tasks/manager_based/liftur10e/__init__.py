@@ -13,7 +13,7 @@ from . import agents
 
 
 gym.register(
-    id="Template-Liftur10e-v0",
+    id="Liftur10e-Managed-v0",
     entry_point="isaaclab.envs:ManagerBasedRLEnv",
     disable_env_checker=True,
     kwargs={
