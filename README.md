@@ -77,8 +77,9 @@ It allows you to develop in an isolated environment, outside of the core Isaac L
 
 
 ```bash
-./isaaclab.sh -p -m tensorboard.main --logdir logs/rsl_rl/Liftur10e-Managed-v0/ 
-./isaaclab.sh -p -m tensorboard.main --logdir logs/rsl_rl/Liftur10e-Managed-v0/
+python -m tensorboard.main --logdir logs
+python -m tensorboard.main --logdir logs/rsl_rl/Liftur10e-Managed-v0/ 
+python -m tensorboard.main --logdir logs/rsl_rl/Liftur10e-Managed-v0/2025-07-22_20-30-21/
 ```
 
 ### Set up IDE (Optional)
