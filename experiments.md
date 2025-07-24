@@ -158,3 +158,36 @@ I’m currently using the reward and reset structure from the Franka Lift enviro
 4 - Training Stability and Policy Robustness:
 
 As seen in the training plots and video, the robot can now grasp the cube, but it still struggles to consistently complete a stable lift. Do you have any practical suggestions to improve training stability, enhance policy generalization, and ensure the robot can reliably complete the task?
+
+## experiment 3
+
+Changed the closing configurations for the gripper
+
+```bash
+################################################################################
+                      Learning iteration 1499/1500                      
+
+                       Computation: 10520 steps/s (collection: 1.154s, learning 0.063s)
+             Mean action noise std: 2.22
+          Mean value_function loss: 0.0495
+               Mean surrogate loss: -0.0087
+                 Mean entropy loss: 15.4601
+                       Mean reward: 21.08
+               Mean episode length: 500.00
+    Episode_Reward/reaching_object: 2.0694
+     Episode_Reward/lifting_object: 0.0828
+Episode_Reward/object_goal_tracking: 0.0097
+Episode_Reward/object_goal_tracking_fine_grained: 0.0000
+        Episode_Reward/action_rate: -0.0098
+          Episode_Reward/joint_vel: -0.0159
+Metrics/object_pose/position_error: 0.6960
+Metrics/object_pose/orientation_error: 2.8262
+      Episode_Termination/time_out: 1.5000
+Episode_Termination/object_dropping: 0.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 19200000
+                    Iteration time: 1.22s
+                      Time elapsed: 00:33:47
+                               ETA: 00:00:01
+```
+

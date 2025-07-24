@@ -54,6 +54,7 @@ It allows you to develop in an isolated environment, outside of the core Isaac L
         ```bash
         # use 'FULL_PATH_TO_isaaclab.sh|bat -p' instead of 'python' if Isaac Lab is not installed in Python venv or conda
         python scripts/rsl_rl/play.py --task Liftur10e-Managed-v0 --num_envs 32
+        python scripts/rsl_rl/play.py --task Liftur10e-Managed-Play-v0
         ```
 
     - Running a task with dummy agents:

@@ -12,6 +12,8 @@ from . import mdp
 from .lift_env_cfg import LiftEnvCfg
 from .ur_gripper import UR10_ROBOTIQ_CFG  
 
+from isaaclab.sensors import ContactSensorCfg
+
 @configclass
 class Liftur10eEnvCfg(LiftEnvCfg):
     def __post_init__(self):
@@ -34,7 +36,8 @@ class Liftur10eEnvCfg(LiftEnvCfg):
             scale=1,
             use_default_offset=True
         )
-
+        # region gripper_action
+        # Gripper Not Working
         self.actions.gripper_action = mdp.BinaryJointPositionActionCfg(
             asset_name="robot",
             joint_names=[               
@@ -43,13 +46,34 @@ class Liftur10eEnvCfg(LiftEnvCfg):
             open_command_expr={ 
                 "finger_joint": 0.0,                
             },
+            # finger_joint to target position = 45 closes it -- math.pi/4
             close_command_expr={
-                "finger_joint": math.pi/4,
+                "finger_joint": 0.57,
             },            
         )
 
         # End effector body name
         self.commands.object_pose.body_name = "robotiq_base_link"
+
+        # -----------------------------------------------------------------------------
+        # -----------------------------------------------------------------------------
+        # Example from the Franka --- Isaac-Lift-Cube-Franka-v0
+        # -----------------------------------------------------------------------------
+        # -----------------------------------------------------------------------------
+        # Set actions for the specific robot type (franka)
+        # self.actions.arm_action = mdp.JointPositionActionCfg(
+        #     asset_name="robot", joint_names=["panda_joint.*"], scale=0.5, use_default_offset=True
+        # )
+        # self.actions.gripper_action = mdp.BinaryJointPositionActionCfg(
+        #     asset_name="robot",
+        #     joint_names=["panda_finger.*"],
+        #     open_command_expr={"panda_finger_.*": 0.04},
+        #     close_command_expr={"panda_finger_.*": 0.0},
+        # )
+        # # Set the body name for the end effector
+        # self.commands.object_pose.body_name = "panda_hand"
+        # -----------------------------------------------------------------------------
+        # -----------------------------------------------------------------------------
 
 
         # Cube as object to lift
@@ -96,6 +120,7 @@ class Liftur10eEnvCfg(LiftEnvCfg):
         marker_cfg = FRAME_MARKER_CFG.copy()
         marker_cfg.markers["frame"].scale = (0.1, 0.1, 0.1)
         marker_cfg.prim_path = "/Visuals/FrameTransformer"
+
         self.scene.ee_frame = FrameTransformerCfg(
             prim_path="{ENV_REGEX_NS}/Robot/base_link",
             debug_vis=False,
@@ -110,6 +135,28 @@ class Liftur10eEnvCfg(LiftEnvCfg):
                 )
             ],
         )
+
+        # ----------------------------------------------------------
+        # region Contact Sensors
+        # TODO: Reward shapping
+        # Must add the contact sensors for the Grasping Learning Reward
+        # add contact sensor to the gripper of the robot
+        self.scene.contact_forces_LF = ContactSensorCfg(
+            prim_path="{ENV_REGEX_NS}/Robot/<magical path>/left_inner_pad", #left_inner_pad
+            update_period=0.0,
+            history_length=6,
+            debug_vis=False,
+            filter_prim_paths_expr=["{ENV_REGEX_NS}/Object"],
+        )
+
+        self.scene.contact_forces_RF = ContactSensorCfg(
+            prim_path="{ENV_REGEX_NS}/Robot/<magical path>/right_inner_pad", #right_inner_pad
+            update_period=0.0,
+            history_length=6,
+            debug_vis=False,
+            filter_prim_paths_expr=["{ENV_REGEX_NS}/Object"],
+        )
+        # ----------------------------------------------------------
 
 @configclass
 class Liftur10eEnvCfg_PLAY(Liftur10eEnvCfg):

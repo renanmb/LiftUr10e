@@ -10,8 +10,8 @@ from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlPpoActorCriticCfg, R
 
 @configclass
 class PPORunnerCfg(RslRlOnPolicyRunnerCfg):
-    num_steps_per_env = 32
-    max_iterations = 2000
+    num_steps_per_env = 32 # 24
+    max_iterations = 1500
     save_interval = 50
     experiment_name = "ur10e_lift"
     empirical_normalization = False
@@ -28,7 +28,7 @@ class PPORunnerCfg(RslRlOnPolicyRunnerCfg):
         entropy_coef=0.01,
         num_learning_epochs=5,
         num_mini_batches=8,
-        learning_rate=3.0e-4,
+        learning_rate=3.0e-4, # 1.0e-04
         schedule="adaptive",
         gamma=0.99,
         lam=0.95,

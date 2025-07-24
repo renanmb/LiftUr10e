@@ -44,8 +44,8 @@ UR10_ROBOTIQ_CFG = ArticulationCfg(
             "wrist_1_joint": 0.0,#math.pi/2,
             "wrist_2_joint": math.pi/2, #math.pi/2,
             "wrist_3_joint": 0.0,
-            # Gripper joints (optional initial positions)
-            "finger_joint": 0.04,            
+            # Gripper joints (optional initial positions) 0.04 'finger_joint': 45.000 not in [0.000, 0.785]
+            "finger_joint": 0.785,            
         },
     ),
     actuators={
